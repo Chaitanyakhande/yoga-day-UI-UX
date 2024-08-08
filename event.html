@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yoga Day Event</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    .background {
+      background-image: url('https://news.sfsu.edu/archive/sites/default/files/main_5.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    .register-btn {
+      background-color: #fff;
+      color: #38a169;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .register-btn:hover {
+      background-color: #38a169;
+      color: #fff;
+    }
+    .fade-in {
+        opacity: 0;
+        transition: opacity 0.5s ease-in;
+    }
+    .fade-in.loaded {
+        opacity: 1;
+    }
+    .fade-out {
+        opacity: 1;
+        transition: opacity 0.5s ease-out;
+    }
+    .fade-out.transitioning {
+        opacity: 0;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+        }, 50);
+
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            if (link.href && link.href !== '#') {
+                const preloadLink = document.createElement('link');
+                preloadLink.rel = 'prefetch';
+                preloadLink.href = link.href;
+                document.head.appendChild(preloadLink);
+            }
+        });
+    });
+
+    function transitionPage(event) {
+        event.preventDefault();
+        const link = event.currentTarget;
+        document.body.classList.add('transitioning');
+        setTimeout(() => {
+            window.location.href = link.href;
+        }, 500);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            if (link.href && link.href !== '#') {
+                link.addEventListener('click', transitionPage);
+            }
+        });
+    });
+  </script>
+</head>
+<body class="bg-gray-200 text-gray-900 fade-in">
+  <header class="bg-green-600 text-white py-4 fade-out">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-3xl font-bold">Yoga Day</h1>
+      <nav>
+        <a href="index.html" class="text-lg mx-2">Home</a>
+        <a href="event.html" class="text-lg mx-2">Event</a>
+        <a href="registration.html" class="text-lg mx-2">Registration</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container mx-auto py-10 background">
+    <section class="text-center mb-10">
+      <h2 class="text-white text-4xl font-bold mb-4">Event Details</h2>
+      <p class="text-white font-bold mb-8">Join us on June 21st for an entire day dedicated to wellness and mindfulness. Below is the schedule of the day's events:</p>
+      <a href="registration.html" class="register-btn">Register Now</a>
+    </section>
+    <section class="schedule-section mb-10">
+      <h3 class="text-white text-2xl font-bold mb-4"><p style="margin-left: 195px;">Schedule</p></h3>
+      <ul class="list-disc list-inside text-left mx-auto max-w-2xl">
+        <li class="mb-2 text-white font-bold"><i class="fas fa-sun"></i> 8:00 AM - 9:00 AM: Morning Yoga Session</li>
+        <p class="text-white ml-8">Start your day with a refreshing yoga session to awaken your body and mind.</p>
+        <li class="mb-2 text-white font-bold"><i class="fas fa-spa"></i> 9:30 AM - 10:30 AM: Meditation Workshop</li>
+        <p class="text-white ml-8">Learn meditation techniques to improve focus and reduce stress.</p>
+        <li class="mb-2 text-white font-bold"><i class="fas fa-leaf"></i> 11:00 AM - 12:00 PM: Wellness Talk</li>
+        <p class="text-white ml-8">Gain insights into wellness practices that promote a balanced lifestyle.</p>
+        <li class="mb-2 text-white font-bold"><i class="fas fa-cloud-sun"></i> 1:00 PM - 2:00 PM: Afternoon Yoga Session</li>
+        <p class="text-white ml-8">Rejuvenate with a post-lunch yoga session focusing on flexibility and relaxation.</p>
+        <li class="mb-2 text-white font-bold"><i class="fas fa-wind"></i> 2:30 PM - 3:30 PM: Breathing Exercises</li>
+        <p class="text-white ml-8">Discover the power of breath control to calm your mind and energize your body.</p>
+        <li class="mb-2 text-white font-bold"><i class="fas fa-peace"></i> 4:00 PM - 5:00 PM: Closing Ceremony</li>
+        <p class="text-white ml-8">End the day with a peaceful closing ceremony, reflecting on the day’s experiences.</p>
+      </ul>
+    </section>
+  </main>
+  <footer class="bg-green-600 text-white py-4">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Yoga Day. All rights reserved. | Contact us: info@yogaday.com</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* Tailwind CSS is already imported via CDN in HTML files, so this file will contain custom styles if needed */
+/* Additional custom styles can be added here if required */
+.background {
+    background-image: url('https://news.sfsu.edu/archive/sites/default/files/main_5.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+.fade-in.loaded {
+    opacity: 1;
+}
+.fade-out {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+.fade-out.transitioning {
+    opacity: 0;
+}
+/* Animation for main content */
+.main-content {
+    animation: fadeInUp 1s ease-in forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);   
+
+    }
+}
